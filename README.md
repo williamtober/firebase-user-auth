@@ -1,2 +1,3 @@
 # firebase-user-auth
-bootstrap firebase source - make things easier in the future I guess
+MAIN does not have a valid build, please refer to [DEV](https://github.com/williamtober/firebase-user-auth/tree/dev)
+
