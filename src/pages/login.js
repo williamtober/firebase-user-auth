@@ -8,16 +8,15 @@ import {
 import { useDispatch } from 'react-redux'
 import { login } from '../features/userSlice'
 
-import { Grid, TextField, Button } from '@mui/material'
-import { toHaveFormValues } from '@testing-library/jest-dom/dist/matchers'
-
 export const Login = () => {
+
     // react hooks to localize input state
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [name, setName] = useState('')
     const [profilePic, setProfilePic] = useState('')
     const dispatch = useDispatch()
+
 
     const loginToApp = (e) => {
         e.preventDefault()
@@ -64,75 +63,58 @@ export const Login = () => {
     }
 
     return (
-        <form display='flex' alignItems='center' justifyContent='center' direction='column' align='center' style={{ minHeight: '100vh', minWidth: '100vw'}}>
-            <Grid container
-                spacing={2}
-                display='flex'
-                justify="center"
-                justifyContent='center'
-                alignItems='center'
-                direction='column'
-                style={{ minHeight: '100vh', minWidth: '100%'}}
-            >
-                <Grid item xs={3} align="center">
-                    <TextField
-                        required
-                        id='email-input'
-                        name='email'
-                        label='Email'
-                        type='email'
+        <div className='flex flex-col items-center justify-center w-[100vw] h-[100vh]'>
+            <form className='rounded-xl w-[400px] h-[600px] flex flex-col items-start justify-center gap-y-8 p-10 bg-green-400 shadow-2xl'>
+                <div className='w-full flex flex-row align-center justify-between'>
+                    <label className='font-bold text-black h-full flex items-center justify-start'>Email</label>
+                    <input
+                        required 
+                        className='rounded py-1 flex items-center justify-start pl-2 focus:shadow'
+                        type='text'
                         value={email}
                         onChange={e => setEmail(e.target.value)}
-                        variant='outlined'
-                        margin="dense"
                     />
-                </Grid>
-                <Grid item xs={3} align="center">
-                    <TextField
-                        required
-                        id='password-input'
-                        name='password'
-                        label='Password'
-                        type='password'
+                </div>
+                <div className='w-full flex flex-row align-center justify-between'>
+                    <label className='font-bold text-black h-full flex items-center justify-start'>Password</label>
+                    <input 
+                        className='rounded py-1 flex items-center justify-start pl-2 focus:shadow'
+                        type='text'
                         value={password}
-                        onChange={e => setPassword(e.target.value)}
-                        margin="dense"
+                        onChange={e => setPassword(e.target.value)} 
                     />
-                </Grid>
-                <Grid item xs={3} align="center">
-                    <TextField
-                        id='name-input'
-                        name='name'
-                        label='Name'
+                </div>
+                <div className='w-full flex flex-row align-center justify-between'>
+                    <label className='font-bold text-black h-full flex items-center justify-start'>Name</label>
+                    <input 
+                        className='rounded py-1 flex items-center justify-start pl-2 focus:shadow'
                         type='text'
                         value={name}
                         onChange={e => setName(e.target.value)}
-                        margin="dense"
                     />
-                </Grid>
-                <Grid item xs={3} align="center">
-                    <TextField
-                        id='profilePic-input'
-                        name='ProfilePic'
-                        label='Profile Picture URL'
+                </div>
+                <div className='w-full flex flex-row align-center justify-between'>
+                    <label className='font-bold text-black h-full flex items-center justify-start'>Profile Picture</label>
+                    <input 
+                        className='rounded py-1 flex items-center justify-start pl-2 focus:shadow'
                         type='text'
                         value={profilePic}
                         onChange={e => setProfilePic(e.target.value)}
-                        margin="dense"
                     />
-                </Grid>
-                <Grid item xs={3} align="center" display='flex' direction='column'>
-                    <Button variant='contained' color='primary' type='submit' onClick={loginToApp} style={{marginBottom: '24px'}}>
-                        Login
-                    </Button>
-                    <span>Not a User?</span>
-                    <Button variant='contained' color='primary' type='submit' onClick={register} style={{marginTop: '6px'}}>
-                        Register Now
-                    </Button>
-                </Grid>
+                </div>
+                <div className='w-full mt-12 flex flex-col justify-center align-center'>
+                    <input onClick={loginToApp} className='bg-white text-black px-full py-2 rounded' type='button' value='Sign In'>
+                    </input>
+                    {/* use hooks to hide other values, until user clicks on register. */}
+                    <span className='w-full mt-8 mb-2 text-center'>Not a User?</span>
+                    <input onClick={register} className='bg-white text-black px-full py-2 rounded' type='button' value='Register'>
+                    </input>
+                </div>
                 
-            </Grid>
-        </form>
+            </form>
+        </div>
+        
+        
     )
 }
 

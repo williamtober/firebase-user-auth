@@ -30,7 +30,7 @@ function App() {
     
   }) 
   return (
-    <div className="App">
+    <div>
 
       {/* Header Section goes here */}
 
@@ -39,7 +39,7 @@ function App() {
         <Login />
       ) : (
         // display the app only to authorized users
-        <div className=''>
+        <div className='w-[100vw] h-[100vh] bg-green-500'>
           {/*  rest of the app would go here */}
         </div>
       )}
