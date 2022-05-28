@@ -2,7 +2,7 @@ import { initializeApp } from 'firebase/app'
 import { 
     getAuth,
     createUserWithEmailAndPassword,
-    updateProfil,
+    updateProfile,
     onAuthStateChanged,
     signInWithEmailAndPassword,
     signOut
@@ -25,7 +25,7 @@ const auth = getAuth()
 export {
     auth,
     createUserWithEmailAndPassword,
-    updateProfil,
+    updateProfile,
     onAuthStateChanged,
     signInWithEmailAndPassword,
     signOut
