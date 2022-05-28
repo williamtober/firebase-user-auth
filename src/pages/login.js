@@ -117,7 +117,7 @@ export const Login = () => {
                         label='Profile Picture URL'
                         type='text'
                         value={profilePic}
-                        value={e => setProfilePic(e.target.value)}
+                        onChange={e => setProfilePic(e.target.value)}
                         margin="dense"
                     />
                 </Grid>
