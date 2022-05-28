@@ -64,51 +64,72 @@ export const Login = () => {
     }
 
     return (
-        <form>
-            <Grid container alignItems='center' justify='center' direction='column'>
-                <Grid item>
+        <form display='flex' alignItems='center' justifyContent='center' direction='column' align='center' style={{ minHeight: '100vh', minWidth: '100vw'}}>
+            <Grid container
+                spacing={2}
+                display='flex'
+                justify="center"
+                justifyContent='center'
+                alignItems='center'
+                direction='column'
+                style={{ minHeight: '100vh', minWidth: '100%'}}
+            >
+                <Grid item xs={3} align="center">
                     <TextField
+                        required
                         id='email-input'
                         name='email'
-                        label='email'
-                        type='text'
-                        value={e => setEmail(e.target.value)}
+                        label='Email'
+                        type='email'
+                        value={email}
+                        onChange={e => setEmail(e.target.value)}
+                        variant='outlined'
+                        margin="dense"
                     />
                 </Grid>
-                <Grid item>
+                <Grid item xs={3} align="center">
                     <TextField
+                        required
                         id='password-input'
                         name='password'
-                        label='password'
-                        type='text'
-                        value={e => setName(e.target.value)}
+                        label='Password'
+                        type='password'
+                        value={password}
+                        onChange={e => setPassword(e.target.value)}
+                        margin="dense"
                     />
                 </Grid>
-                <Grid item>
+                <Grid item xs={3} align="center">
                     <TextField
                         id='name-input'
                         name='name'
-                        label='name'
+                        label='Name'
                         type='text'
-                        value={e => setName(e.target.value)}
+                        value={name}
+                        onChange={e => setName(e.target.value)}
+                        margin="dense"
                     />
                 </Grid>
-                <Grid item>
+                <Grid item xs={3} align="center">
                     <TextField
                         id='profilePic-input'
                         name='ProfilePic'
-                        label='ProfilePic'
+                        label='Profile Picture URL'
                         type='text'
+                        value={profilePic}
                         value={e => setProfilePic(e.target.value)}
+                        margin="dense"
                     />
                 </Grid>
-                <Button variant='contained' color='primary' type='submit'>
-                    Register Now
-                </Button>
-                <span>Not a User?</span>
-                <Button variant='contained' color='primary' type='submit'>
-                    Register Now
-                </Button>
+                <Grid item xs={3} align="center" display='flex' direction='column'>
+                    <Button variant='contained' color='primary' type='submit' onClick={loginToApp} style={{marginBottom: '24px'}}>
+                        Login
+                    </Button>
+                    <span>Not a User?</span>
+                    <Button variant='contained' color='primary' type='submit' onClick={register} style={{marginTop: '6px'}}>
+                        Register Now
+                    </Button>
+                </Grid>
                 
             </Grid>
         </form>
