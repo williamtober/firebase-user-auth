@@ -89,7 +89,7 @@ export const Login = () => {
                     <input 
                         className='rounded py-1 flex items-center justify-start pl-2 focus:shadow w-full'
                         placeholder='Password'
-                        type='text'
+                        type='password'
                         value={password}
                         onChange={e => setPassword(e.target.value)} 
                     />

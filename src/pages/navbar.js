@@ -1,7 +1,18 @@
 import React from "react";
+import { useDispatch, userSelector } from "react-redux";
+import { auth } from '../firebase'
+import { logout } from '../features/userSlice'
 
 export default function Navbar(props) {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
+  const dispatch = useDispatch()
+
+  const logMeOut = () => {
+    // update state with redux
+    dispatch(logout())
+    // let firebase know that we're outta here
+    auth.signOut()
+  }
   return (
     <>
       <nav className="w-[100vw] h-[7vh] flex flex-wrap items-center justify-between px-2 py-3 bg-blue-600">
@@ -38,7 +49,8 @@ export default function Navbar(props) {
                   <i className="fab fa-twitter text-lg leading-lg text-white opacity-75"></i><span className="ml-2">Account</span>
                 </a>
               </li>
-              <li className="nav-item">
+
+              <li className="nav-item" onClick={logMeOut}>
                 <a
                   className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
                   href="#pablo"
