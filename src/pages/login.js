@@ -26,6 +26,7 @@ export const Login = () => {
         signInWithEmailAndPassword(auth, email, password)
         // authorized user object returned from FB here 
         .then((userAuth) => {
+            console.log('logging in : ', userAuth)
             dispatch(login({
                 email : userAuth.user.email,
                 uid : userAuth.user.uid,
@@ -45,6 +46,7 @@ export const Login = () => {
         // CREATE USER IF NAME FOUND
         createUserWithEmailAndPassword(auth, email, password)
         .then((userAuth) => {
+            console.log('creating user with email and password : ', userAuth)
             updateProfile(userAuth.user, {
                 displayName : name,
                 photoURL : profilePic
