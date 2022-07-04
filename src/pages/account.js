@@ -16,11 +16,9 @@ const Account = (props) => {
     const handleUpdate = () => {
         // using name for now, just to see if the data goes through redux
         dispatch(update({
-            // TODO : create coniditonal that changes the object depending on values
-            // TODO : perhaps u can just handle this logic in the userSlice.. 
-            // TODO : yeah that makes more sense and u can handle the coniditonals
-            // TODO : globally accross the entire application
-            displayName : name,
+            password : password,
+            name : name,
+            email : email
             
         }))
     }
@@ -41,7 +39,7 @@ const Account = (props) => {
                             <form className='flex flex-col gap-y-10'>
                                 <div className='flex flex-col gap-y-4'>
                                     <label for='email'>Email : </label>
-                                    <input value={email} onChange={e => setEmail(e.target.value)} disabled type='email' name='email' id='email' className='px-3 py-3 cursor-not-allowed placeholder-slate-300 text-slate-600 relative bg-gray-400 rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full'/>
+                                    <input value={email} onChange={e => setEmail(e.target.value)} type='email' name='email' id='email' className='px-3 py-3 cursor-not-allowed placeholder-slate-300 text-slate-600 relative bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full'/>
                                 </div>
                                 <div className='flex flex-col gap-y-4'>
                                     <label for='password'>Password : </label>

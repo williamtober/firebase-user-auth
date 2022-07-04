@@ -33,7 +33,6 @@ function App() {
         dispatch(logout())
       }
     })
-    console.log('page rendered');
   }, []) 
   return (
     <div className='w-[100vw] h-[100vh] overflow-hidden flex flex-col place-items-center justify-center items-center bg-green-50'>

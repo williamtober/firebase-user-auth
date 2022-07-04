@@ -4,7 +4,9 @@ import {
     createUserWithEmailAndPassword,
     updateProfile,
     signInWithEmailAndPassword
+    
 } from '../firebase'
+import { sendPasswordResetEmail } from 'firebase/auth'
 import { useDispatch } from 'react-redux'
 import { login } from '../features/userSlice'
 
@@ -34,6 +36,19 @@ export const Login = () => {
                 photoUrl : userAuth.user.photoURL
             }))
         }).catch(err => alert(err))
+    }
+
+    const requestPasswordReset = (e) => {
+        e.preventDefault();
+        sendPasswordResetEmail(auth, email)
+            .then(() => {
+                // password reset email is sent
+                //
+            }).catch((err) => {
+                // error has occured
+                console.log(err)
+            })
+
     }
 
     const register = () => {
@@ -94,6 +109,7 @@ export const Login = () => {
                         onChange={e => setPassword(e.target.value)} 
                     />
                 </div>
+                
                 <div style={registerStyle} className='w-full flex flex-row align-center justify-between'>
                     <label className='font-bold text-black h-full hidden items-center justify-start'>Name</label>
                     <input 
@@ -118,7 +134,10 @@ export const Login = () => {
                     <input style={newUser ? {display: 'none'} : {display: 'flex'}} onClick={loginToApp} className='bg-blue-500 text-gray-50 font-semibold px-full py-2 rounded justify-center hover:cursor-pointer' type='button' value='Sign In'>
                     </input>
                     {/* use hooks to hide other values, until user clicks on register. */}
+                    
                     <span style={newUser ? {display: 'none'} : {display: 'flex'}} className='w-full mt-8 mb-2 text-center justify-center'>Not a User? <span className='text-blue-400 ml-1 hover:cursor-pointer' onClick={e => setNewUser(!newUser)}>Register Today. </span></span>
+                    <span style={newUser ? {display: 'none'} : {display: 'flex'}} className='w-full mb-2 text-center justify-center'>Forgot password? <span className='text-blue-400 ml-1 hover:cursor-pointer' onClick={requestPasswordReset}>Reset Password. </span></span>
+
                     <input style={registerStyle} onClick={register} className='bg-blue-500 text-gray-50 font-semibold py-2 rounded justify-center hover:cursor-pointer' type='button' value='Register'>
                         
                     </input>
